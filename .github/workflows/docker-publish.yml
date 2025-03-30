@@ -1,16 +1,20 @@
 name: Docker
 
 on:
-  workflow_dispatch:
-    inputs:
-      tagInput:
-        description: "Tag"
-        required: true
-
-  release:
-    types: [created]
+  push:
     tags:
       - "v*"
+
+  # workflow_dispatch:
+  #   inputs:
+  #     tagInput:
+  #       description: "Tag"
+  #       required: true
+
+  # release:
+  #   types: [created]
+  #   tags:
+  #     - "v*"
 
 jobs:
   build-and-push-image:

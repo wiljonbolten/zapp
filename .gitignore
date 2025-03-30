@@ -2,6 +2,7 @@
 /.idea
 /.vscode
 /.vagrant
+/mount
 .phpunit.result.cache
 composer.lock
 /database/database.sqlite

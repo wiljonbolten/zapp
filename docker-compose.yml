@@ -1,0 +1,49 @@
+name: zapp
+services:
+    zapp:
+        cpu_shares: 90
+        command: []
+        container_name: zapp
+        deploy:
+            resources:
+                limits:
+                    memory: "16609443840"
+        environment:
+            PGID: "1000"
+            PUID: "1000"
+            TZ: Europe/Amsterdam
+        # image: wiljonbolten/zapp:latest
+        build: .
+        labels:
+            icon: https://icon.casaos.io/main/all/zapp.png
+        network_mode: bridge
+        privileged: true
+        restart: unless-stopped
+        volumes:
+            - type: bind
+              source: ./mount/config/
+              target: /config/
+            - type: bind
+              source: ./mount/movies/
+              target: /movies/
+            - type: bind
+              source: ./mount/series/
+              target: /series/
+            - type: bind
+              source: ./mount/transcode/
+              target: /transcode/
+networks:
+    default:
+        name: zapp_default
+x-casaos:
+    author: self
+    category: self
+    hostname: ""
+    icon: https://icon.casaos.io/main/all/zapp.png
+    index: /
+    is_uncontrolled: false
+    port_map: ""
+    scheme: http
+    store_app_id: zapp
+    title:
+        custom: Zapp

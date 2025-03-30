@@ -28,7 +28,7 @@ class InstallCommand extends Command
      */
     public function handle()
     {
-        $database_file = \Phar::running() ? $_SERVER['HOME'] . '/.zapp/config/database.sqlite' : database_path('database.sqlite');
+        $database_file = '/config/database.sqlite';
 
         if (!File::isDirectory(\dirname($database_file))) {
             File::makeDirectory(\dirname($database_file), 0755, true);

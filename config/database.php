@@ -34,8 +34,7 @@ return [
         'sqlite' => [
             'driver' => 'sqlite',
             'url' => env('DB_URL'),
-            // 'database' => env('DB_DATABASE', base_path('mount/config/database.sqlite')),
-            'database' => \Phar::running() ? $_SERVER['HOME'] . '/.zapp/config/database.sqlite' : database_path('database.sqlite'),
+            'database' => '/config/database.sqlite',
             'prefix' => '',
             'foreign_key_constraints' => env('DB_FOREIGN_KEYS', true),
         ],

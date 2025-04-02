@@ -28,14 +28,23 @@ class InstallCommand extends Command
      */
     public function handle()
     {
-        $database_file = '/config/database.sqlite';
+        $needed_folders = ['/config', '/movies', '/tv', '/transcode'];
+        $needed_files = ['/config/database.sqlite'];
 
-        if (!File::isDirectory(\dirname($database_file))) {
-            File::makeDirectory(\dirname($database_file), 0755, true);
+        if (! empty($needed_folders)) {
+            foreach ($needed_folders as $needed_folder) {
+                if (!File::isDirectory($needed_folder)) {
+                    File::makeDirectory($needed_folder, 0755, true);
+                }
+            }
         }
 
-        if (!File::isFile($database_file)) {
-            File::put($database_file, '');
+        if (! empty($needed_files)) {
+            foreach ($needed_files as $needed_file) {
+                if (!File::isFile($needed_file)) {
+                    File::put($needed_file, '');
+                }
+            }
         }
 
         render(<<<'HTML'

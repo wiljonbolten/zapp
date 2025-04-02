@@ -59,7 +59,9 @@ COPY --chown=appuser:appuser docker/config/etc/php/8.2/cli/conf.d/y-php.ini /etc
 # Permissions for start script
 RUN chmod a+x /usr/local/bin/start
 
-# Required for php-fpm and nginx as non-root user
+RUN mkdir -p /config /movies /tv /transcode
+RUN chown -R appuser:appuser /config /movies /tv /transcode
+
 RUN mkdir -p /run/php
 RUN chown -R appuser:appuser /var/www/app /var/log /var/lib /run
 RUN chmod -R 777 /var/log /var/lib /run

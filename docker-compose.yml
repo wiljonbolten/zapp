@@ -19,19 +19,19 @@ services:
         network_mode: bridge
         privileged: true
         restart: unless-stopped
-        volumes:
-            - type: bind
-              source: ./mount/config/
-              target: /config/
-            - type: bind
-              source: ./mount/movies/
-              target: /movies/
-            - type: bind
-              source: ./mount/tv/
-              target: /tv/
-            - type: bind
-              source: ./mount/transcode/
-              target: /transcode/
+        # volumes:
+        #     - type: bind
+        #       source: ./mount/config/
+        #       target: /config/
+        #     - type: bind
+        #       source: ./mount/movies/
+        #       target: /movies/
+        #     - type: bind
+        #       source: ./mount/tv/
+        #       target: /tv/
+        #     - type: bind
+        #       source: ./mount/transcode/
+        #       target: /transcode/
 networks:
     default:
         name: zapp_default

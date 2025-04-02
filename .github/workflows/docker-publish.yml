@@ -50,5 +50,5 @@ jobs:
           platforms: linux/amd64,linux/arm64
           push: true
           tags: |
-            wiljonbolten/zapp:latest
             wiljonbolten/zapp:${{ steps.version-tag.outputs.value }}
+            wiljonbolten/zapp:latest

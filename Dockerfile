@@ -35,6 +35,7 @@ RUN apt update \
     git \
     htop \
     nano \
+    ffmpeg \
     # nginx \ # KEEP FOR FUTURE USE
     supervisor \
     unzip \
@@ -59,7 +60,7 @@ COPY --chown=appuser:appuser docker/config/etc/php/8.2/cli/conf.d/y-php.ini /etc
 # Permissions for start script
 RUN chmod a+x /usr/local/bin/start
 
-RUN mkdir -p /config /movies /tv /transcode
+RUN mkdir -p /config /movies /tv /transcode /transcode/movies /transcode/tv
 RUN chown -R appuser:appuser /config /movies /tv /transcode
 
 RUN mkdir -p /run/php

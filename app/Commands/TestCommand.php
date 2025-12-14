@@ -30,15 +30,6 @@ class TestCommand extends Command
     {
         $message = "Log complete!";
 
-        Log::emergency($message);
-        Log::alert($message);
-        Log::critical($message);
-        Log::error($message);
-        Log::warning($message);
-        Log::notice($message);
-        Log::info($message);
-        Log::debug($message);
-
         $this->task("Installing Laravel", function () {
             sleep(1);
             return true;
@@ -64,6 +55,6 @@ class TestCommand extends Command
      */
     public function schedule(Schedule $schedule): void
     {
-        $schedule->command(static::class)->everyMinute();
+        // $schedule->command(static::class)->everyMinute();
     }
 }

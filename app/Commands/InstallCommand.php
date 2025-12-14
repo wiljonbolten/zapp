@@ -34,7 +34,7 @@ class InstallCommand extends Command
         if (! empty($needed_folders)) {
             foreach ($needed_folders as $needed_folder) {
                 if (!File::isDirectory($needed_folder)) {
-                    File::makeDirectory($needed_folder, 0755, true);
+                    File::makeDirectory($needed_folder, 0775, true);
                 }
             }
         }

@@ -2,6 +2,8 @@
 
 namespace App\Commands;
 
+use function Termwind\render;
+use Illuminate\Support\Facades\Log;
 use Illuminate\Console\Scheduling\Schedule;
 use LaravelZero\Framework\Commands\Command;
 
@@ -26,7 +28,35 @@ class TestCommand extends Command
      */
     public function handle()
     {
-        return 'blue';
+        $message = "Log complete!";
+
+        Log::emergency($message);
+        Log::alert($message);
+        Log::critical($message);
+        Log::error($message);
+        Log::warning($message);
+        Log::notice($message);
+        Log::info($message);
+        Log::debug($message);
+
+        $this->task("Installing Laravel", function () {
+            sleep(1);
+            return true;
+        });
+
+        $this->task("Doing something else", function () {
+            sleep(1);
+            return false;
+        });
+
+        render(<<<'HTML'
+            <div class="py-1 ml-2">
+                <div class="px-1 bg-yellow-300 text-black">ZAPP</div>
+                <em class="ml-1">
+                  Test complete.
+                </em>
+            </div>
+        HTML);
     }
 
     /**

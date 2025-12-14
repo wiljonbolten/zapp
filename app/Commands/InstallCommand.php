@@ -47,6 +47,14 @@ class InstallCommand extends Command
             }
         }
 
+        $this->task("Installing Laravel", function () {
+            return true;
+        });
+
+        $this->task("Doing something else", function () {
+            return false;
+        });
+
         render(<<<'HTML'
             <div class="py-1 ml-2">
                 <div class="px-1 bg-yellow-300 text-black">ZAPP</div>

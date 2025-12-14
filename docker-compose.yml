@@ -12,8 +12,8 @@ services:
             PGID: 1000
             PUID: 1000
             TZ: Europe/Amsterdam
-        build: .
-        # image: wiljonbolten/zapp:latest
+        # build: .
+        image: wiljonbolten/zapp:latest
         labels:
             icon: https://icon.casaos.io/main/all/zapp.png
         network_mode: bridge
@@ -21,19 +21,19 @@ services:
         restart: unless-stopped
         devices:
           - /dev/dri:/dev/dri
-        # volumes:
-        #     - type: bind
-        #       source: ./mount/config/
-        #       target: /config/
-        #     - type: bind
-        #       source: ./mount/movies/
-        #       target: /movies/
-        #     - type: bind
-        #       source: ./mount/tv/
-        #       target: /tv/
-        #     - type: bind
-        #       source: ./mount/transcode/
-        #       target: /transcode/
+        volumes:
+            - type: bind
+              source: ./mount/config/
+              target: /config/
+            - type: bind
+              source: ./mount/movies/
+              target: /movies/
+            - type: bind
+              source: ./mount/tv/
+              target: /tv/
+            - type: bind
+              source: ./mount/transcode/
+              target: /transcode/
 networks:
     default:
         name: zapp_default

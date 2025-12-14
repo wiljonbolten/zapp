@@ -7,5 +7,9 @@ return [
             'driver' => 'local',
             'root' => getcwd(),
         ],
+        'mount' => [
+            'driver' => 'local',
+            'root' => getcwd() . '/mount',
+        ],
     ],
 ];
